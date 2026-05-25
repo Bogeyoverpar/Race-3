@@ -1,0 +1,35 @@
+﻿race_id,name,track,track_type,laps,stage_1_end,stage_2_end,chaos
+R01,Moreland 500,Moreland Superspeedway,Superspeedway,50,12,28,8
+R02,Midland 400,Midland Speedway,Intermediate,67,17,37,4
+R03,Atlantic Coast 450,Delaware Motor Speedway,Intermediate,64,16,35,5
+R04,Charles 350,Charles Raceway,Short Track,117,29,64,10
+R05,Washington 500,Washington International Raceway,Superspeedway,56,14,31,9
+R06,Redding 350,Redding Short Track,Short Track,97,24,53,7
+R07,Oceanview 500,Oceanview Superspeedway,Superspeedway,63,16,35,8
+R08,Midland Spring 400,Midland Speedway,Intermediate,67,17,37,4
+R09,Homestead 500,Homestead International Speedway,Intermediate,83,21,46,4
+R10,Capital 450,Washington International Raceway,Superspeedway,50,12,28,8
+R11,Fairfax 350,Fairfax Raceway,Short Track,88,22,48,6
+R12,Moreland Summer 500,Moreland Superspeedway,Superspeedway,50,12,28,8
+R13,Colonial 500,Colonial Speedway,Intermediate,71,18,39,5
+R14,Purshing Memorial 500,Purshing Motor Speedway,Speedway,63,16,35,6
+R15,Three Rivers 350,Three Rivers Raceway,Short Track,88,22,48,7
+R16,Fox Valley 500,Fox Valley Speedway,Intermediate,83,21,46,5
+R17,Charles Night 350,Charles Raceway,Short Track,117,29,64,10
+R18,Takoma Summer Classic 350,Takoma Park Speedway,Short Track,109,27,60,8
+R19,Circuit Electric 450,Circuit Electric Raceway,Intermediate,75,19,41,5
+R20,Columbia College 400,Columbia College Speedway,Intermediate,67,17,37,4
+R21,Great Lakes 450,Great Lakes Speedway,Intermediate,56,14,31,4
+R22,Energy Star 500,Energy Star Speedway,Speedway,63,16,35,7
+R23,Sierra Mountain 350,Sierra Raceway Park,Short Track,70,18,38,6
+R24,Homestead Summer 450,Homestead International Speedway,Intermediate,75,19,41,4
+R25,Heritage 500,Heritage Motor Speedway,Speedway,63,16,35,6
+R26,Campbell County 350,Campbell County Raceway,Short Track,97,24,53,7
+R27,Takoma Fall 350,Takoma Park Speedway,Short Track,109,27,60,8
+R28,National Fairgrounds 400,National Fairgrounds Speedway,Intermediate,80,20,44,6
+R29,Fox Valley Fall 400,Fox Valley Speedway,Intermediate,67,17,37,5
+R30,Filter for Good 500,Filter for Good Speedway,Speedway,63,16,35,7
+R31,Bobcat 400,Bobcat Motor Speedway,Intermediate,67,17,37,5
+R32,Washington Fall 500,Washington International Raceway,Superspeedway,56,14,31,9
+R33,Fort Clinton 500,Fort Clinton Superspeedway,Superspeedway,50,12,28,9
+R34,Ithica 500,Ithica Speedway,Championship Intermediate,83,21,46,3
