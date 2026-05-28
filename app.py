@@ -109,10 +109,10 @@ st.write(f"**Stages:** {race.stage_1_end}, {race.stage_2_end}")
 
 st.divider()
 
-    start_race = st.button(
-        "Start / Reset Race",
-        type="primary",
-        use_container_width=True
+start_race = st.button(
+    "Start / Reset Race",
+    type="primary",
+    use_container_width=True
     )
 
 # -------------------------------------------------------------------
