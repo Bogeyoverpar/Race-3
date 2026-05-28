@@ -17,6 +17,30 @@ st.set_page_config(
 
 st.title("🏁 LRA Race Control")
 st.caption("Offline event-driven racing simulator UI")
+def status_icon(status):
+    if status == "OUT":
+        return "❌ OUT"
+    if status == "HEAVY_DAMAGE":
+        return "🔴 Heavy"
+    if status == "DAMAGED":
+        return "🟠 Damaged"
+    return "🟢 Running"
+
+def fuel_icon(fuel):
+    if fuel <= 0:
+        return "❌ Empty"
+    if fuel <= 12:
+        return f"🔴 {fuel}"
+    if fuel <= 25:
+        return f"🟡 {fuel}"
+    return f"🟢 {fuel}"
+
+def tire_icon(age):
+    if age >= 25:
+        return f"🔴 {age}"
+    if age >= 15:
+        return f"🟡 {age}"
+    return f"🟢 {age}"
 
 # -------------------------------------------------------------------
 # Load data
@@ -47,6 +71,33 @@ with st.sidebar:
         10,
         race.chaos
     )
+    # Broadcast-style leaderboard ticker
+ticker_df = pd.DataFrame(session.standings_snapshot()).head(8)
+
+ticker_text = "   |   ".join(
+    [
+        f"P{row['Pos']} #{row['Car']} {row['Driver']} ({row['+/-']:+})"
+        for _, row in ticker_df.iterrows()
+    ]
+)
+
+st.markdown(
+    f"""
+    <div style="
+        background-color:#111;
+        color:white;
+        padding:12px;
+        border-radius:8px;
+        font-size:18px;
+        font-weight:700;
+        white-space:nowrap;
+        overflow-x:auto;
+    ">
+        {ticker_text}
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
     st.divider()
 
@@ -374,6 +425,39 @@ with control_col:
 with event_col:
     st.subheader("Current Event")
 
+    if event:
+    color = "#333"
+
+    if event.event_type == "CAUTION":
+        color = "#d6a800"
+    elif event.event_type == "CRASH":
+        color = "#c0392b"
+    elif event.event_type == "GREEN_FLAG":
+        color = "#1e8449"
+    elif event.event_type == "RACE_FINISH":
+        color = "#111"
+    elif event.event_type == "PIT_WINDOW":
+        color = "#2471a3"
+    elif event.event_type == "QUALIFYING":
+        color = "#6c3483"
+
+    st.markdown(
+        f"""
+        <div style="
+            background-color:{color};
+            color:white;
+            padding:18px;
+            border-radius:10px;
+            margin-bottom:12px;
+        ">
+            <h2 style="margin:0;">Lap {event.lap} — {event.event_type}</h2>
+            <h3 style="margin:4px 0 0 0;">{event.title}</h3>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.text(event.message)
     event = st.session_state.last_event
 
     if event:
@@ -389,6 +473,19 @@ with event_col:
     if st.session_state.followup:
         followup = st.session_state.followup
         st.success(f"{followup.title}: {followup.message}")
+    st.subheader("Race Feed")
+
+feed_rows = []
+
+for e in reversed(session.event_log[-8:]):
+    feed_rows.append(
+        f"**Lap {e.lap} — {e.title}**  \n{e.message}"
+    )
+
+if feed_rows:
+    st.markdown("---\n".join(feed_rows))
+else:
+    st.write("No race updates yet.")
 
 st.divider()
 
@@ -410,14 +507,9 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 
 with tab1:
     standings_df = pd.DataFrame(session.standings_snapshot())
-
-    st.subheader("Lead Drivers")
-
-    st.dataframe(
-        standings_df.head(10),
-        use_container_width=True,
-        hide_index=True
-    )
+    standings_df["Fuel"] = standings_df["Fuel"].apply(fuel_icon)
+    standings_df["Tire Age"] = standings_df["Tire Age"].apply(tire_icon)
+    standings_df["Status"] = standings_df["Status"].apply(status_icon)
 
     st.subheader("Full Running Order")
 
