@@ -101,13 +101,13 @@ st.markdown(
 
 st.divider()
 
-    st.write("### Race Info")
-    st.write(f"**Track:** {race.track}")
-    st.write(f"**Type:** {race.track_type.title()}")
-    st.write(f"**Laps:** {race.laps}")
-    st.write(f"**Stages:** {race.stage_1_end}, {race.stage_2_end}")
+st.write("### Race Info")
+st.write(f"**Track:** {race.track}")
+st.write(f"**Type:** {race.track_type.title()}")
+st.write(f"**Laps:** {race.laps}")
+st.write(f"**Stages:** {race.stage_1_end}, {race.stage_2_end}")
 
-    st.divider()
+st.divider()
 
     start_race = st.button(
         "Start / Reset Race",
