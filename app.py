@@ -99,7 +99,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-    st.divider()
+st.divider()
 
     st.write("### Race Info")
     st.write(f"**Track:** {race.track}")
