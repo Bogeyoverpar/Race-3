@@ -426,7 +426,7 @@ with event_col:
     st.subheader("Current Event")
 
     if event:
-    color = "#333"
+        color = "#333"
 
     if event.event_type == "CAUTION":
         color = "#d6a800"
