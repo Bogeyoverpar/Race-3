@@ -71,33 +71,6 @@ with st.sidebar:
         10,
         race.chaos
     )
-    # Broadcast-style leaderboard ticker
-ticker_df = pd.DataFrame(session.standings_snapshot()).head(8)
-
-ticker_text = "   |   ".join(
-    [
-        f"P{row['Pos']} #{row['Car']} {row['Driver']} ({row['+/-']:+})"
-        for _, row in ticker_df.iterrows()
-    ]
-)
-
-st.markdown(
-    f"""
-    <div style="
-        background-color:#111;
-        color:white;
-        padding:12px;
-        border-radius:8px;
-        font-size:18px;
-        font-weight:700;
-        white-space:nowrap;
-        overflow-x:auto;
-    ">
-        {ticker_text}
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 
 st.divider()
 
@@ -134,7 +107,35 @@ if start_race or "session" not in st.session_state:
     st.session_state.followup = None
 
 session: RaceSession = st.session_state.session
+# Broadcast-style leaderboard ticker
+ticker_df = pd.DataFrame(session.standings_snapshot()).head(8)
 
+ticker_text = "   |   ".join(
+    [
+        f"P{row['Pos']} #{row['Car']} {row['Driver']} ({row['+/-']:+})"
+        for _, row in ticker_df.iterrows()
+    ]
+)
+
+st.markdown(
+    f"""
+    <div style="
+        background-color:#111;
+        color:white;
+        padding:12px;
+        border-radius:8px;
+        font-size:18px;
+        font-weight:700;
+        white-space:nowrap;
+        overflow-x:auto;
+    ">
+        {ticker_text}
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.divider()
 # -------------------------------------------------------------------
 # Top status row
 # -------------------------------------------------------------------
